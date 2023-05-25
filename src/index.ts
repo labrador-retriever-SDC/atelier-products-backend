@@ -6,6 +6,7 @@ import cors from 'cors';
 const app: Application = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.get('/', async(req: Request, res: Response): Promise<Response> => res.status(200).send({ message: 'Welcome to SDC'}));
 

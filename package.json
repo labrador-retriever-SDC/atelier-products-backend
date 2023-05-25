@@ -1,5 +1,6 @@
-{
+{   "type": "module",
     "devDependencies": {
+        "@types/cors": "^2.8.13",
         "@types/express": "^4.17.17",
         "@types/node": "^20.2.3",
         "@typescript-eslint/eslint-plugin": "^5.59.7",
@@ -19,7 +20,8 @@
         "dev": "tsc --watch",
         "lint": "eslint . --ext .js,.ts .",
         "fix": "eslint . --ext .js,.ts . --fix",
-        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+        "start": "npx nodemon --watch server dist/src/index.js"
     },
     "prettier": {
         "trailingComma": "es5",
