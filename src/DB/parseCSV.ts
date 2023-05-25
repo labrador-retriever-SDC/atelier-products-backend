@@ -22,7 +22,7 @@ const parseCSV = async (pathName: string) => new Promise((callback, reject) => {
         results.push(data);
       })
       .on('end', () => {
-        callback(results);
+        console.log(results);
       })
       .on('error', (error) => {
         reject(error);
