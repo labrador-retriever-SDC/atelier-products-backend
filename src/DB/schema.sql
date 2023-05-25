@@ -1,12 +1,14 @@
+-- DROP DATABASE IF EXISTS products;
 CREATE DATABASE products;
-\c products
 
+
+DROP TABLE IF EXISTS skus;
+DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS styles;
+DROP TABLE IF EXISTS features;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS related;
-DROP TABLE IF EXISTS features;
-DROP TABLE IF EXISTS styles;
-DROP TABLE IF EXISTS photos;
-DROP TABLE IF EXISTS skus;
+
 
 CREATE TABLE products (
   id int PRIMARY KEY,
@@ -26,58 +28,58 @@ CREATE TABLE related (
 CREATE TABLE features (
   id int PRIMARY KEY,
   product_id int,
-  feature varchar(300) NOT NULL,
-  value varchar(255) NOT NULL,
+  feature varchar,
+  value varchar,
   FOREIGN KEY (product_id) REFERENCES products (id)
 );
 
 CREATE TABLE styles (
   id int,
-  product_id int NOT NULL,
+  productId int NOT NULL,
   name varchar(150) NOT NULL,
-  sale_price int,
+  sale_price varchar,
   original_price int NOT NULL,
-  default_style boolean,
-  PRIMARY KEY (id, product_id),
-  FOREIGN KEY (product_id) REFERENCES products (id)
+  default_style int NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (productId) REFERENCES products (id)
 );
 
 CREATE TABLE photos (
   id int,
   styleId int,
-  url varchar(200),
-  thumbnail_url varchar(200),
-  PRIMARY KEY (id, styleId),
+  url varchar,
+  thumbnail_url varchar,
+  PRIMARY KEY (id),
   FOREIGN KEY (styleId) REFERENCES styles (id)
 );
 
 CREATE TABLE skus (
   id int,
   styleId int,
-  size varchar(5),
+  size varchar(25),
   quantity int,
-  PRIMARY KEY (id, styleId),
+  PRIMARY KEY (id),
   FOREIGN KEY (styleId) REFERENCES styles (id)
 );
 
 CREATE INDEX products_index_0 ON products (id);
 
-COPY products
+COPY products (id, name, slogan, description, category, default_price)
 FROM '/Users/rodrigogramitto/Desktop/HR/projects/sdc/atelier-products-backend/src/DB/csv_files/product.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY related
+COPY related (id, current_product_id, related_product_id)
 FROM '/Users/rodrigogramitto/Desktop/HR/projects/sdc/atelier-products-backend/src/DB/csv_files/related.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY features
-FROM '/Users/rodrigogramitto/Desktop/HR/projects/sdc/atelier-products-backend/src/DB/csv_files/related.csv'
+COPY features (id, product_id, feature, value)
+FROM '/Users/rodrigogramitto/Desktop/HR/projects/sdc/atelier-products-backend/src/DB/csv_files/features.csv'
 DELIMITER ','
 CSV HEADER;
 
-COPY styles
+COPY styles (id, productId, name, sale_price, original_price, default_style)
 FROM '/Users/rodrigogramitto/Desktop/HR/projects/sdc/atelier-products-backend/src/DB/csv_files/styles.csv'
 DELIMITER ','
 CSV HEADER;
@@ -94,5 +96,5 @@ CSV HEADER;
 
 
 /*  Execute this file from the command line by typing:
- *    psql -u root < server/schema.sql
+ *    psql -U (username) < schema.sql
  *  to create the database and the tables.*/
