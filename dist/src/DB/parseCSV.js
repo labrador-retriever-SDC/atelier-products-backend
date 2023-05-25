@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,20 +34,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var csv_parser_1 = __importDefault(require("csv-parser"));
-var fs_1 = __importDefault(require("fs"));
-var path_1 = __importDefault(require("path"));
+import csv from 'csv-parser';
+import fs from 'fs';
+import path from 'path';
 var parseCSV = function (pathName) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, new Promise(function (callback, reject) {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 var results = [];
-                fs_1.default.createReadStream(path_1.default.join(__dirname, pathName))
-                    .pipe((0, csv_parser_1.default)({
+                fs.createReadStream(path.join(__dirname, pathName))
+                    .pipe(csv({
                     mapValues: function (_a) {
                         var header = _a.header, value = _a.value;
                         switch (header) {
@@ -72,5 +67,5 @@ var parseCSV = function (pathName) { return __awaiter(void 0, void 0, void 0, fu
             })];
     });
 }); };
-exports.default = parseCSV;
+export default parseCSV;
 //# sourceMappingURL=parseCSV.js.map

@@ -1,13 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
-var sequelize_1 = require("sequelize");
-var username = 'postgres';
-var password = 'suavecoco';
-var sequelize = new sequelize_1.Sequelize('products', username, password, {
-    host: 'localhost',
-    dialect: 'postgres'
+import { Sequelize } from 'sequelize';
+var user = process.env.DB_USER;
+var password = process.env.DB_PASSWORD;
+var dbHost = process.env.DB_HOST;
+var dbName = process.env.DB_NAME;
+var dbDriver = process.env.DB_DRIVER;
+var sequelizeConnection = new Sequelize(dbName, user, password, {
+    host: dbHost,
+    dialect: dbDriver
 });
-exports.default = sequelize;
+export default sequelizeConnection;
 //# sourceMappingURL=postgresETL.js.map
