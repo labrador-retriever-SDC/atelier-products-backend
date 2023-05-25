@@ -4,8 +4,12 @@ import express from 'express';
 const Router = express.Router();
 
 //
-Router.get('/products', (req, res) => {
+Router.get('', (req, res) => {
   res.send('You have reached products')
+})
+
+Router.get('/products/:id', (req, res) => {
+  res.send('You have reached product information')
 })
 
 export default Router;

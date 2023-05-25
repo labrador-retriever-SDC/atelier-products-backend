@@ -11,7 +11,10 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 
 // Routes
-app.use(Router);
+// app.use('/products', Router);
+app.get('/products', (req, res) => {
+  res.send('Hi daddy');
+})
 
 app.get('/', async(req: Request, res: Response): Promise<Response> => res.status(200).send({ message: 'Welcome to SDC'}));
 
