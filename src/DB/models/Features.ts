@@ -1,4 +1,4 @@
-import { DataTypes} from 'sequelize'
+import { DataTypes } from 'sequelize'
 import sequelize from '../postgresETL.ts'
 
 const Feature = sequelize.define('Feature', {
