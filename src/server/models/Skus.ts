@@ -1,5 +1,5 @@
 import { DataTypes} from 'sequelize'
-import sequelize from '../db/sequelize.ts';
+import sequelize from '../db/sequelize';
 
 const Sku = sequelize.define('Sku', {
 id: {
