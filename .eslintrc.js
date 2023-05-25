@@ -18,6 +18,15 @@ module.exports = {
     ignorePatterns: ['dist'],
     plugins: ['@typescript-eslint'],
     rules: {
-        // Add any additional rules or overrides here
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+         ]
     },
 }

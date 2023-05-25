@@ -1,5 +1,5 @@
 import { DataTypes} from 'sequelize'
-import sequelize from '../postgresETL.ts'
+import sequelize from '../db/sequelize.ts';
 
 const Related = sequelize.define('Related', {
 id: {
