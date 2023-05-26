@@ -36,9 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-import fs from 'node:fs';
-import path from 'node:path';
-import Products from '../models/Products.js';
+// import Features from '../models/Features.js';
+// import Photos from '../models/Photos.js';
+// import Products from '../models/Products.js';
+// import Related from '../models/Related.js';
+// import Skus from '../models/Skus.js';
+// import Styles from '../models/Styles.js';
 // Create a database connection and export it from this file.
 // Confirm that the credentials supplied for the connection are correct.
 // pass in a connection uri
@@ -51,7 +54,7 @@ var dbPass = process.env.DB_PASSWORD || '';
 var dbHost = process.env.DB_HOST || '';
 var dbDriver = process.env.DB_DRIVER || '';
 // connection
-var db = new Sequelize(dbName, dbUser, dbPass, {
+var sequelize = new Sequelize(dbName, dbUser, dbPass, {
     host: dbHost,
     dialect: 'postgres'
 });
@@ -61,7 +64,7 @@ var testConnection = function () { return __awaiter(void 0, void 0, void 0, func
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, db.authenticate()];
+                return [4 /*yield*/, sequelize.authenticate()];
             case 1:
                 _a.sent();
                 console.log('Connection has been established successfully.');
@@ -74,22 +77,21 @@ var testConnection = function () { return __awaiter(void 0, void 0, void 0, func
         }
     });
 }); };
-testConnection();
 /**
  * Seeding data by executing seed.sql
  */
-db.sync()
-    .then(function () { return Products.count(); })
-    .then(function (count) {
-    // run seed.sql only if Reviews is empty
-    if (count === 0) {
-        var sqlString = fs.readFileSync(path.join(__dirname, '/seed.sql'), 'utf8');
-        return db.query(sqlString);
-    }
-    return undefined;
-})
-    .then(function () { return console.log("Done seeding data."); })
-    .catch(function (err) { return console.log("Error seeding data", err); })
-    .then(function () { return process.exit(); });
-export default db;
+// db.sync()
+//   .then(() => Products.count())
+//   .then((count) => {
+//     // run seed.sql only if Reviews is empty
+//     if (count === 0) {
+//       const sqlString = fs.readFileSync(path.join(__dirname, '/seed.sql'), 'utf8');
+//       return db.query(sqlString);
+//     }
+//     return undefined;
+//   })
+//   .then(() => console.log("Done seeding data."))
+//   .catch(err => console.log("Error seeding data", err))
+//   .then(() => process.exit());
+export default { sequelize: sequelize, testConnection: testConnection };
 //# sourceMappingURL=sequelize.js.map

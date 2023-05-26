@@ -39,19 +39,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import express from 'express';
 import cors from 'cors';
 import Router from './API/routes/router.js';
+import sequelize from './server/db/sequelize.js';
 var app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-// Routes
-app.use(Router);
-// app.get('/products', (req, res) => {
-//   res.send('Hi daddy');
-// })
-// test connection to database
 app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
     return [2 /*return*/, res.status(200).send({ message: 'Welcome to SDC' })];
 }); }); });
+// Test database connection
+sequelize.testConnection();
+// Routes
+app.use(Router);
 try {
     app.listen(3000, function () { console.log('Server running on http://localhost:3000'); });
 }
