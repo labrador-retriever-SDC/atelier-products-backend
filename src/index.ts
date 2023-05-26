@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
-import Router from './API/routes/router';
+import Router from './API/routes/router.js';
 
 const app: Application = express();
 
@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 
 // Routes
-app.use('/products', Router);
+app.use(Router);
 // app.get('/products', (req, res) => {
 //   res.send('Hi daddy');
 // })

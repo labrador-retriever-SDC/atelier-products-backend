@@ -38,13 +38,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 /* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import cors from 'cors';
-import Router from './API/routes/router';
+import Router from './API/routes/router.js';
 var app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 // Routes
-app.use('/products', Router);
+app.use(Router);
 // app.get('/products', (req, res) => {
 //   res.send('Hi daddy');
 // })
