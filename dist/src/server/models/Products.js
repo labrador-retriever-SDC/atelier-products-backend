@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/sequelize';
-var Product = sequelize.define('Product', {
+var Products = sequelize.define('Product', {
     'id': {
         type: DataTypes.INTEGER,
         allowNull: false
@@ -26,5 +26,5 @@ var Product = sequelize.define('Product', {
         allowNull: false
     }
 });
-export default Product;
+export default Products;
 //# sourceMappingURL=Products.js.map

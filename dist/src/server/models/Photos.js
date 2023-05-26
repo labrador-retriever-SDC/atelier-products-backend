@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/sequelize';
-var Photo = sequelize.define('Photo', {
+var Photos = sequelize.define('Photo', {
     id: {
         type: DataTypes.NUMBER,
         allowNull: false
@@ -18,5 +18,5 @@ var Photo = sequelize.define('Photo', {
         allowNull: false
     }
 });
-export default Photo;
+export default Photos;
 //# sourceMappingURL=Photos.js.map

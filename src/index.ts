@@ -16,6 +16,8 @@ app.use(Router);
 //   res.send('Hi daddy');
 // })
 
+// test connection to database
+
 app.get('/', async(req: Request, res: Response): Promise<Response> => res.status(200).send({ message: 'Welcome to SDC'}));
 
 

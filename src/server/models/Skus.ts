@@ -1,7 +1,7 @@
 import { DataTypes} from 'sequelize'
 import sequelize from '../db/sequelize';
 
-const Sku = sequelize.define('Sku', {
+const Skus = sequelize.define('Sku', {
 id: {
   type: DataTypes.NUMBER,
   allowNull: false
@@ -20,4 +20,4 @@ quantity: {
 }
 })
 
-export default Sku;
+export default Skus;

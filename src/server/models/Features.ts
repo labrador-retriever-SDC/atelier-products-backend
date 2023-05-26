@@ -1,7 +1,7 @@
 import { DataTypes} from 'sequelize'
 import sequelize from '../db/sequelize.js';
 
-const Feature = sequelize.define('Feature', {
+const Features = sequelize.define('Feature', {
 id: {
   type: DataTypes.NUMBER,
   allowNull: false
@@ -20,4 +20,4 @@ value: {
 }
 })
 
-export default Feature;
+export default Features;

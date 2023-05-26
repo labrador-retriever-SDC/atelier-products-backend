@@ -1,7 +1,7 @@
 import { DataTypes} from 'sequelize'
 import sequelize from '../db/sequelize';
 
-const Photo = sequelize.define('Photo', {
+const Photos = sequelize.define('Photo', {
 id: {
   type: DataTypes.NUMBER,
   allowNull: false
@@ -20,4 +20,4 @@ thumbnail_url: {
 }
 })
 
-export default Photo;
+export default Photos;

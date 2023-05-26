@@ -48,6 +48,7 @@ app.use(Router);
 // app.get('/products', (req, res) => {
 //   res.send('Hi daddy');
 // })
+// test connection to database
 app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
     return [2 /*return*/, res.status(200).send({ message: 'Welcome to SDC' })];
 }); }); });

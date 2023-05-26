@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/sequelize.js';
-var Feature = sequelize.define('Feature', {
+var Features = sequelize.define('Feature', {
     id: {
         type: DataTypes.NUMBER,
         allowNull: false
@@ -18,5 +18,5 @@ var Feature = sequelize.define('Feature', {
         allowNull: false
     }
 });
-export default Feature;
+export default Features;
 //# sourceMappingURL=Features.js.map

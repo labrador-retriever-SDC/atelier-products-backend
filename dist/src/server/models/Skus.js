@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/sequelize';
-var Sku = sequelize.define('Sku', {
+var Skus = sequelize.define('Sku', {
     id: {
         type: DataTypes.NUMBER,
         allowNull: false
@@ -18,5 +18,5 @@ var Sku = sequelize.define('Sku', {
         allowNull: false
     }
 });
-export default Sku;
+export default Skus;
 //# sourceMappingURL=Skus.js.map

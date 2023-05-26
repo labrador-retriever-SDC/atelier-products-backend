@@ -1,7 +1,7 @@
 import { DataTypes} from 'sequelize'
 import sequelize from '../db/sequelize';
 
-const Style = sequelize.define('Style', {
+const Styles = sequelize.define('Style', {
   'id': {
     type: DataTypes.NUMBER,
     allowNull: false
@@ -27,4 +27,4 @@ const Style = sequelize.define('Style', {
   }
 })
 
-export default Style;
+export default Styles;

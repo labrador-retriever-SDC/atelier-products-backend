@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/sequelize';
-var Style = sequelize.define('Style', {
+var Styles = sequelize.define('Style', {
     'id': {
         type: DataTypes.NUMBER,
         allowNull: false
@@ -25,5 +25,5 @@ var Style = sequelize.define('Style', {
         allowNull: false
     }
 });
-export default Style;
+export default Styles;
 //# sourceMappingURL=Styles.js.map
