@@ -48,7 +48,7 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
     return [2 /*return*/, res.status(200).send({ message: 'Welcome to SDC' })];
 }); }); });
 // Test database connection
-sequelize.testConnection();
+sequelize.authenticate();
 // Routes
 app.use(Router);
 try {
