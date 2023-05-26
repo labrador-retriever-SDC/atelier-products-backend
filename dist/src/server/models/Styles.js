@@ -1,29 +1,30 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db/sequelize';
-var Styles = sequelize.define('Styles', {
-    'id': {
+import sequelize from '../db/sequelize.js';
+var Styles = sequelize.define('styles', {
+    id: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
     },
-    'product_id': {
+    product_id: {
         type: DataTypes.INTEGER,
     },
-    'name': {
+    name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
-    'sale_price': {
+    sale_price: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
     },
-    'original_price': {
+    original_price: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
     },
-    'default_style': {
+    default_style: {
         type: DataTypes.STRING,
-        allowNull: false
-    }
+        allowNull: false,
+    },
 }, { timestamps: false });
 export default Styles;
 //# sourceMappingURL=Styles.js.map

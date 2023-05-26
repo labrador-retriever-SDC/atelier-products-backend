@@ -1,22 +1,23 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/sequelize.js';
-var Photos = sequelize.define('Photos', {
+var Photos = sequelize.define('photos', {
     id: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
     },
     styleId: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
     },
     url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     thumbnail_url: {
         type: DataTypes.STRING,
-        allowNull: false
-    }
+        allowNull: false,
+    },
 }, { timestamps: false });
 export default Photos;
 //# sourceMappingURL=Photos.js.map

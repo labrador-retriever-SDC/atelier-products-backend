@@ -56,4 +56,4 @@ const testConnection = async () => {
 //   .catch(err => console.log("Error seeding data", err))
 //   .then(() => process.exit());
 
-export default sequelize;
+export default sequelize

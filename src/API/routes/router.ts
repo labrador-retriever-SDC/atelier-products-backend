@@ -10,9 +10,15 @@ Router.get('/products', (req, res) => {
         count: req.query.count as string,
     }
     controller.getProducts(query)
+    .then((data) => {
+      res.send(data)
+    })
+    .catch((err) => {
+      res.send('There was an error getting products')
+    })
     // write a function that queries database for requestd info
     // send requested info
-    res.send('You have reached products endpoint')
+    // res.send('You have reached products endpoint')
 })
 
 Router.get('/products/:id', (req, res) => {

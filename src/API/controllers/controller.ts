@@ -1,15 +1,25 @@
 import sequelize from '../../server/db/sequelize.js'
+import model from '../../server/models/model.js'
 
 const controller = {
-    getProducts: (query: Query<string>) => {
-        console.log(
-            'Page:',
-            parseInt(query.page),
-            'Count',
-            parseInt(query.count)
-        )
+    getProducts: async (query: Query<string>) => {
+        // console.log(
+        //     'Page:',
+        //     parseInt(query.page),
+        //     'Count',
+        //     parseInt(query.count)
+        // )
         // query db async
-        // return data
+        try {
+            const data = await model.products.findAll({
+                limit: Number(query.count),
+                attributes: ['id', 'name', 'slogan', 'description', 'category', 'default_price']
+            })
+            return data;
+        } catch (err) {
+            console.log('Error getting products from db');
+        }
+
     },
 
     getProductInfo: (productId: number) => {

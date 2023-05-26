@@ -7,10 +7,16 @@ Router.get('/products', function (req, res) {
         page: req.query.page,
         count: req.query.count,
     };
-    controller.getProducts(query);
+    controller.getProducts(query)
+        .then(function (data) {
+        res.send(data);
+    })
+        .catch(function (err) {
+        res.send('There was an error getting products');
+    });
     // write a function that queries database for requestd info
     // send requested info
-    res.send('You have reached products endpoint');
+    // res.send('You have reached products endpoint')
 });
 Router.get('/products/:id', function (req, res) {
     var productId = parseInt(req.params.id.substring(3));

@@ -1,18 +1,19 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../db/sequelize';
-var Related = sequelize.define('Related', {
+import sequelize from '../db/sequelize.js';
+var Related = sequelize.define('related', {
     id: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
     },
     current_product_id: {
         type: DataTypes.NUMBER,
-        allowNull: false
+        allowNull: false,
     },
     related_product_id: {
         type: DataTypes.NUMBER,
-        allowNull: false
-    }
+        allowNull: false,
+    },
 }, { timestamps: false });
 export default Related;
 //# sourceMappingURL=Related.js.map
