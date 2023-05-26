@@ -1,5 +1,4 @@
 type Query<T> = {
-  page: T;
-  count: T
+    page: T
+    count: T
 }
-

@@ -12,7 +12,7 @@ var controller = {
     },
     getRelatedProducts: function (productId) {
         console.log('You are requesting related products for product #', productId);
-    }
+    },
 };
 export default controller;
 //# sourceMappingURL=controller.js.map

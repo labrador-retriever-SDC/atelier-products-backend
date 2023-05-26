@@ -56,7 +56,7 @@ var dbDriver = process.env.DB_DRIVER || '';
 // connection
 var sequelize = new Sequelize(dbName, dbUser, dbPass, {
     host: dbHost,
-    dialect: 'postgres'
+    dialect: 'postgres',
 });
 var testConnection = function () { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;

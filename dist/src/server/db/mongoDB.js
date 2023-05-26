@@ -22,7 +22,7 @@ var styleSchema = new mongoose.Schema({
     sale_price: Number,
     default: Boolean,
     photos: [{ thumbnail_url: String, url: String }],
-    skus: [{ sku_id: Number, quantity: Number, size: String }]
+    skus: [{ sku_id: Number, quantity: Number, size: String }],
 });
 var Product = mongoose.model('Product', productSchema);
 var Style = mongoose.model('Style', styleSchema);

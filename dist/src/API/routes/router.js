@@ -3,7 +3,10 @@ import controller from '../controllers/controller.js';
 var Router = express.Router({ mergeParams: true });
 Router.get('/products', function (req, res) {
     // figre out how to extract page and count
-    var query = { page: req.query.page, count: req.query.count };
+    var query = {
+        page: req.query.page,
+        count: req.query.count,
+    };
     controller.getProducts(query);
     // write a function that queries database for requestd info
     // send requested info

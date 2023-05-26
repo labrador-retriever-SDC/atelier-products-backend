@@ -1,7 +1,7 @@
-import { Sequelize, DataTypes, Deferrable } from 'sequelize';
-import dotenv from 'dotenv';
-import fs from 'node:fs';
-import path from 'node:path';
+import { Sequelize, DataTypes, Deferrable } from 'sequelize'
+import dotenv from 'dotenv'
+import fs from 'node:fs'
+import path from 'node:path'
 // import Features from '../models/Features.js';
 // import Photos from '../models/Photos.js';
 // import Products from '../models/Products.js';
@@ -16,27 +16,27 @@ import path from 'node:path';
 // Example for postgres
 // const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbName')
 
-dotenv.config();
+dotenv.config()
 
-const dbName = process.env.DB_NAME || '';
-const dbUser = process.env.DB_USER || '';
-const dbPass = process.env.DB_PASSWORD || '';
-const dbHost = process.env.DB_HOST || '';
-const dbDriver = process.env.DB_DRIVER || '';
+const dbName = process.env.DB_NAME || ''
+const dbUser = process.env.DB_USER || ''
+const dbPass = process.env.DB_PASSWORD || ''
+const dbHost = process.env.DB_HOST || ''
+const dbDriver = process.env.DB_DRIVER || ''
 
 // connection
 const sequelize = new Sequelize(dbName, dbUser, dbPass, {
-  host: dbHost,
-  dialect: 'postgres'
-});
+    host: dbHost,
+    dialect: 'postgres',
+})
 
 const testConnection = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+    try {
+        await sequelize.authenticate()
+        console.log('Connection has been established successfully.')
+    } catch (error) {
+        console.error('Unable to connect to the database:', error)
+    }
 }
 
 /**
@@ -56,5 +56,4 @@ const testConnection = async () => {
 //   .catch(err => console.log("Error seeding data", err))
 //   .then(() => process.exit());
 
-
-export default { sequelize, testConnection };
+export default { sequelize, testConnection }
