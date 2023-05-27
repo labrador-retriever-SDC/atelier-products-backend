@@ -40,8 +40,12 @@ Router.get('/products/:id/styles', (req, res) => {
 Router.get('/products/:id/related', (req, res) => {
     let productId = Number(req.params.id) as number
     controller.getRelatedProducts(productId)
-
-    res.send('You have reached related products')
+    .then((data) => {
+        res.send(data);
+    })
+    .catch((err) => {
+        res.send('Error getting related products')
+    })
 })
 
 export default Router

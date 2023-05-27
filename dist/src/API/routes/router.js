@@ -34,8 +34,13 @@ Router.get('/products/:id/styles', function (req, res) {
 });
 Router.get('/products/:id/related', function (req, res) {
     var productId = Number(req.params.id);
-    controller.getRelatedProducts(productId);
-    res.send('You have reached related products');
+    controller.getRelatedProducts(productId)
+        .then(function (data) {
+        res.send(data);
+    })
+        .catch(function (err) {
+        res.send('Error getting related products');
+    });
 });
 export default Router;
 //# sourceMappingURL=router.js.map

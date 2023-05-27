@@ -14,15 +14,15 @@ var model = {
     Styles: Styles,
 };
 // Relationships
-products.hasMany(Features);
-products.hasMany(Related);
+products.hasMany(Features, { foreignKey: 'product_id' });
+products.hasMany(Related, { foreignKey: 'current_product_id' });
 products.hasMany(Styles);
 Styles.hasMany(Skus);
 Styles.hasMany(Photos);
 Skus.belongsTo(Styles);
 Photos.belongsTo(Styles);
 Styles.belongsTo(products);
-Related.belongsTo(products);
-Features.belongsTo(products);
+Related.belongsTo(products, { foreignKey: 'current_product_id' });
+Features.belongsTo(products, { foreignKey: 'product_id' });
 export default model;
 //# sourceMappingURL=model.js.map

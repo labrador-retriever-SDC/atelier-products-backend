@@ -34,9 +34,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import sequelize from '../../server/db/sequelize.js';
 import model from '../../server/models/model.js';
-import { QueryTypes } from 'sequelize';
+// import Features from 'src/server/models/Features.js'
 var controller = {
     getProducts: function (query) { return __awaiter(void 0, void 0, void 0, function () {
         var data, err_1;
@@ -66,13 +65,21 @@ var controller = {
             }
         });
     }); },
+    // SEQUELIZE MAGIC ._
     getProductInfo: function (productId) { return __awaiter(void 0, void 0, void 0, function () {
         var data, err_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, sequelize.query("SELECT * FROM products\n          JOIN features ON products.id = features.product_id\n          WHERE products.id = ".concat(productId, ";"), { type: QueryTypes.SELECT })];
+                    return [4 /*yield*/, model.products.findOne({ include: [{ model: model.Features }], where: { id: productId }, attributes: [
+                                'id',
+                                'name',
+                                'slogan',
+                                'description',
+                                'category',
+                                'default_price',
+                            ] })];
                 case 1:
                     data = _a.sent();
                     return [2 /*return*/, data];
@@ -84,12 +91,32 @@ var controller = {
             }
         });
     }); },
-    getProductStyles: function (productId) {
-        console.log('You are requesting styles for product #', productId);
-    },
-    getRelatedProducts: function (productId) {
-        console.log('You are requesting related products for product #', productId);
-    },
+    getProductStyles: function (productId) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/];
+        });
+    }); },
+    getRelatedProducts: function (productId) { return __awaiter(void 0, void 0, void 0, function () {
+        var data, err_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, model.Related.findAll({
+                            where: { current_product_id: productId },
+                            attributes: ['related_product_id']
+                        })];
+                case 1:
+                    data = _a.sent();
+                    return [2 /*return*/, data];
+                case 2:
+                    err_3 = _a.sent();
+                    console.log('Error getting related products', err_3);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); }
 };
 export default controller;
 //# sourceMappingURL=controller.js.map

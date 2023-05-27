@@ -2,6 +2,7 @@ import { FindAttributeOptions } from 'sequelize'
 import sequelize from '../../server/db/sequelize.js'
 import model from '../../server/models/model.js'
 import { QueryTypes } from 'sequelize'
+// import Features from 'src/server/models/Features.js'
 
 const controller = {
     getProducts: async (query: Query<string>) => {
@@ -23,27 +24,38 @@ const controller = {
         }
     },
 
-    getProductInfo: async (productId: number) => {
+    // SEQUELIZE MAGIC ._
+      getProductInfo: async (productId: number) => {
         try {
-          const data = await sequelize.query(`SELECT * FROM products
-          JOIN features ON products.id = features.product_id
-          WHERE products.id = ${productId};`, { type: QueryTypes.SELECT })
+          const data = await model.products.findOne({include: [{model: model.Features}], where: {id: productId}, attributes: [
+            'id',
+            'name',
+            'slogan',
+            'description',
+            'category',
+            'default_price',
+        ]})
           return data;
         } catch (err) {
           console.log('Error getting product details', err);
         }
       },
 
-    getProductStyles: (productId: number) => {
-        console.log('You are requesting styles for product #', productId)
+    getProductStyles: async (productId: number) => {
+
     },
 
-    getRelatedProducts: (productId: number) => {
-        console.log(
-            'You are requesting related products for product #',
-            productId
-        )
-    },
+    getRelatedProducts: async (productId: number) => {
+      try {
+        const data = await model.Related.findAll({
+          where: {current_product_id: productId},
+          attributes: ['related_product_id']
+        })
+        return data
+      } catch (err) {
+        console.log('Error getting related products', err);
+      }
+    }
 }
 
 export default controller
