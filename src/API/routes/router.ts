@@ -15,28 +15,30 @@ Router.get('/products', (req, res) => {
             res.send(data)
         })
         .catch((err) => {
-            res.send('There was an error getting products')
+            res.send('Error getting products')
         })
 })
 
 Router.get('/products/:id', (req, res) => {
-    console.log('req params', req.params);
-    let productId = parseInt(req.params.id) as number
-    controller.getProductInfo(productId)
-    // return response from db
-    // somewhow format the data into the expected format
-    res.send('You have reached product information')
+    console.log('req params', req.params)
+    let productId = Number(req.params.id) as number
+    controller
+        .getProductInfo(productId)
+        .then((data) => {
+            res.send(data)
+        })
+        .catch((err) => {
+            res.send('Error getting product info')
+        })
 })
 
 Router.get('/products/:id/styles', (req, res) => {
-    let productId = parseInt(req.params.id) as number
+    let productId = Number(req.params.id) as number
     controller.getProductStyles(productId)
-
-    res.send('You have reached product styles')
 })
 
 Router.get('/products/:id/related', (req, res) => {
-    let productId = parseInt(req.params.id) as number
+    let productId = Number(req.params.id) as number
     controller.getRelatedProducts(productId)
 
     res.send('You have reached related products')

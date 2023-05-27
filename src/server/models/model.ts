@@ -15,4 +15,16 @@ const model = {
     Styles: Styles,
 }
 
+// Relationships
+products.hasMany(Features)
+products.hasMany(Related)
+products.hasMany(Styles)
+Styles.hasMany(Skus)
+Styles.hasMany(Photos)
+Skus.belongsTo(Styles)
+Photos.belongsTo(Styles)
+Styles.belongsTo(products)
+Related.belongsTo(products)
+Features.belongsTo(products)
+
 export default model
