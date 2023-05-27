@@ -4,7 +4,7 @@ var Features = sequelize.define('features', {
     id: {
         type: DataTypes.NUMBER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
     },
     product_id: {
         type: DataTypes.NUMBER,

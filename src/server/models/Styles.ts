@@ -7,7 +7,7 @@ const Styles = sequelize.define(
         id: {
             type: DataTypes.NUMBER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
         },
         product_id: {
             type: DataTypes.INTEGER,

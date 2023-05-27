@@ -3,13 +3,6 @@ import model from '../../server/models/model.js'
 
 const controller = {
     getProducts: async (query: Query<string>) => {
-        // console.log(
-        //     'Page:',
-        //     parseInt(query.page),
-        //     'Count',
-        //     parseInt(query.count)
-        // )
-        // query db async
         try {
             const data = await model.products.findAll({
                 limit: Number(query.count),
@@ -19,7 +12,6 @@ const controller = {
         } catch (err) {
             console.log('Error getting products from db');
         }
-
     },
 
     getProductInfo: (productId: number) => {

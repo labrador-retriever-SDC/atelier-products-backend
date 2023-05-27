@@ -7,7 +7,8 @@ Router.get('/products', function (req, res) {
         page: req.query.page,
         count: req.query.count,
     };
-    controller.getProducts(query)
+    controller
+        .getProducts(query)
         .then(function (data) {
         res.send(data);
     })

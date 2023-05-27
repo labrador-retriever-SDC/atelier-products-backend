@@ -7,7 +7,7 @@ const Related = sequelize.define(
         id: {
             type: DataTypes.NUMBER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
         },
         current_product_id: {
             type: DataTypes.NUMBER,

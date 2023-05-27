@@ -9,13 +9,14 @@ Router.get('/products', (req, res) => {
         page: req.query.page as string,
         count: req.query.count as string,
     }
-    controller.getProducts(query)
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.send('There was an error getting products')
-    })
+    controller
+        .getProducts(query)
+        .then((data) => {
+            res.send(data)
+        })
+        .catch((err) => {
+            res.send('There was an error getting products')
+        })
     // write a function that queries database for requestd info
     // send requested info
     // res.send('You have reached products endpoint')

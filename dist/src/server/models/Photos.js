@@ -4,7 +4,7 @@ var Photos = sequelize.define('photos', {
     id: {
         type: DataTypes.NUMBER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
     },
     styleId: {
         type: DataTypes.NUMBER,
