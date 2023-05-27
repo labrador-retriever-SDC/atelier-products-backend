@@ -17,13 +17,11 @@ Router.get('/products', (req, res) => {
         .catch((err) => {
             res.send('There was an error getting products')
         })
-    // write a function that queries database for requestd info
-    // send requested info
-    // res.send('You have reached products endpoint')
 })
 
 Router.get('/products/:id', (req, res) => {
-    let productId = parseInt(req.params.id.substring(3)) as number
+    console.log('req params', req.params);
+    let productId = parseInt(req.params.id) as number
     controller.getProductInfo(productId)
     // return response from db
     // somewhow format the data into the expected format
@@ -31,14 +29,14 @@ Router.get('/products/:id', (req, res) => {
 })
 
 Router.get('/products/:id/styles', (req, res) => {
-    let productId = parseInt(req.params.id.substring(3)) as number
+    let productId = parseInt(req.params.id) as number
     controller.getProductStyles(productId)
 
     res.send('You have reached product styles')
 })
 
 Router.get('/products/:id/related', (req, res) => {
-    let productId = parseInt(req.params.id.substring(3)) as number
+    let productId = parseInt(req.params.id) as number
     controller.getRelatedProducts(productId)
 
     res.send('You have reached related products')

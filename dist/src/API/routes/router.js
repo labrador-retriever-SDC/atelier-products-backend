@@ -15,24 +15,22 @@ Router.get('/products', function (req, res) {
         .catch(function (err) {
         res.send('There was an error getting products');
     });
-    // write a function that queries database for requestd info
-    // send requested info
-    // res.send('You have reached products endpoint')
 });
 Router.get('/products/:id', function (req, res) {
-    var productId = parseInt(req.params.id.substring(3));
+    console.log('req params', req.params);
+    var productId = parseInt(req.params.id);
     controller.getProductInfo(productId);
     // return response from db
     // somewhow format the data into the expected format
     res.send('You have reached product information');
 });
 Router.get('/products/:id/styles', function (req, res) {
-    var productId = parseInt(req.params.id.substring(3));
+    var productId = parseInt(req.params.id);
     controller.getProductStyles(productId);
     res.send('You have reached product styles');
 });
 Router.get('/products/:id/related', function (req, res) {
-    var productId = parseInt(req.params.id.substring(3));
+    var productId = parseInt(req.params.id);
     controller.getRelatedProducts(productId);
     res.send('You have reached related products');
 });
