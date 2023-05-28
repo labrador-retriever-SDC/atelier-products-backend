@@ -1,3 +1,7 @@
+ -- use database
+
+\c products;
+
 COPY products (id, name, slogan, description, category, default_price)
 FROM '/Users/rodrigogramitto/Desktop/HR/projects/sdc/atelier-products-backend/src/server/csv_files/product.csv'
 DELIMITER ','

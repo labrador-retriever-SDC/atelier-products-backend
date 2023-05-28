@@ -17,7 +17,7 @@ app.get(
 )
 
 // Test database connection
-sequelize.testConnection()
+sequelize.authenticate()
 
 // Routes
 app.use(Router)

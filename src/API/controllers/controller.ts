@@ -1,31 +1,61 @@
+import { FindAttributeOptions } from 'sequelize'
 import sequelize from '../../server/db/sequelize.js'
+import model from '../../server/models/model.js'
+import { QueryTypes } from 'sequelize'
+// import Features from 'src/server/models/Features.js'
 
 const controller = {
-    getProducts: (query: Query<string>) => {
-        console.log(
-            'Page:',
-            parseInt(query.page),
-            'Count',
-            parseInt(query.count)
-        )
-        // query db async
-        // return data
+    getProducts: async (query: Query<string>) => {
+        try {
+            const data = await model.products.findAll({
+                limit: Number(query.count),
+                attributes: [
+                    'id',
+                    'name',
+                    'slogan',
+                    'description',
+                    'category',
+                    'default_price',
+                ],
+            })
+            return data
+        } catch (err) {
+            console.log('Error getting products from db')
+        }
     },
 
-    getProductInfo: (productId: number) => {
-        console.log('You are requesting product info for product #', productId)
+    // SEQUELIZE MAGIC ._
+      getProductInfo: async (productId: number) => {
+        try {
+          const data = await model.products.findOne({include: [{model: model.Features}], where: {id: productId}, attributes: [
+            'id',
+            'name',
+            'slogan',
+            'description',
+            'category',
+            'default_price',
+        ]})
+          return data;
+        } catch (err) {
+          console.log('Error getting product details', err);
+        }
+      },
+
+    getProductStyles: async (productId: number) => {
+
     },
 
-    getProductStyles: (productId: number) => {
-        console.log('You are requesting styles for product #', productId)
-    },
-
-    getRelatedProducts: (productId: number) => {
-        console.log(
-            'You are requesting related products for product #',
-            productId
-        )
-    },
+    getRelatedProducts: async (productId: number) => {
+      try {
+        const data = await model.Related.findAll({
+          where: {current_product_id: productId},
+          attributes: ['related_product_id']
+        })
+        return data
+      } catch (err) {
+        console.log('Error getting related products', err);
+      }
+    }
 }
 
 export default controller

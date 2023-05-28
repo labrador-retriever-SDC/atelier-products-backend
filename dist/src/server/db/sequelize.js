@@ -93,5 +93,5 @@ var testConnection = function () { return __awaiter(void 0, void 0, void 0, func
 //   .then(() => console.log("Done seeding data."))
 //   .catch(err => console.log("Error seeding data", err))
 //   .then(() => process.exit());
-export default { sequelize: sequelize, testConnection: testConnection };
+export default sequelize;
 //# sourceMappingURL=sequelize.js.map
