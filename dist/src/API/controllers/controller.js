@@ -104,11 +104,12 @@ var controller = {
                     _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, model.Related.findAll({
                             where: { current_product_id: productId },
-                            attributes: ['related_product_id']
+                            attributes: ['related_product_id'],
+                            raw: true
                         })];
                 case 1:
                     data = _a.sent();
-                    return [2 /*return*/, data];
+                    return [2 /*return*/, data.map(function (item) { return item.related_product_id; })];
                 case 2:
                     err_3 = _a.sent();
                     console.log('Error getting related products', err_3);

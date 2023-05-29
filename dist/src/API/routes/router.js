@@ -4,8 +4,8 @@ var Router = express.Router({ mergeParams: true });
 Router.get('/products', function (req, res) {
     // figre out how to extract page and count
     var query = {
-        page: req.query.page,
-        count: req.query.count,
+        page: req.query.page || '1',
+        count: req.query.count || '5',
     };
     controller
         .getProducts(query)
@@ -31,6 +31,7 @@ Router.get('/products/:id', function (req, res) {
 Router.get('/products/:id/styles', function (req, res) {
     var productId = Number(req.params.id);
     controller.getProductStyles(productId);
+    res.send();
 });
 Router.get('/products/:id/related', function (req, res) {
     var productId = Number(req.params.id);

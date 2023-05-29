@@ -5,7 +5,7 @@ import { QueryTypes } from 'sequelize'
 // import Features from 'src/server/models/Features.js'
 
 const controller = {
-    getProducts: async (query: Query<string>) => {
+    getProducts: async (query: any) => {
         try {
             const data = await model.products.findAll({
                 limit: Number(query.count),
@@ -45,17 +45,18 @@ const controller = {
 
     },
 
-    getRelatedProducts: async (productId: number) => {
-      try {
-        const data = await model.Related.findAll({
-          where: {current_product_id: productId},
-          attributes: ['related_product_id']
-        })
-        return data
-      } catch (err) {
-        console.log('Error getting related products', err);
+      getRelatedProducts: async (productId: number) => {
+        try {
+          const data = await model.Related.findAll({
+            where: {current_product_id: productId},
+            attributes: ['related_product_id'],
+            raw: true
+          })
+          return data.map((item: any) => {return item.related_product_id as number})
+        } catch (err) {
+          console.log('Error getting related products', err);
+        }
       }
-    }
 }
 
 export default controller
