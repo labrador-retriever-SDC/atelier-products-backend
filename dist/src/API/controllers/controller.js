@@ -72,14 +72,18 @@ var controller = {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, model.products.findOne({ include: [{ model: model.Features }], where: { id: productId }, attributes: [
+                    return [4 /*yield*/, model.products.findOne({
+                            include: [{ model: model.Features }],
+                            where: { id: productId },
+                            attributes: [
                                 'id',
                                 'name',
                                 'slogan',
                                 'description',
                                 'category',
                                 'default_price',
-                            ] })];
+                            ],
+                        })];
                 case 1:
                     data = _a.sent();
                     return [2 /*return*/, data];
@@ -92,31 +96,58 @@ var controller = {
         });
     }); },
     getProductStyles: function (productId) { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/];
-        });
-    }); },
-    getRelatedProducts: function (productId) { return __awaiter(void 0, void 0, void 0, function () {
         var data, err_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, model.Related.findAll({
-                            where: { current_product_id: productId },
-                            attributes: ['related_product_id']
+                    return [4 /*yield*/, model.Styles.findAll({
+                            include: [{ model: model.Photos }, { model: model.Skus }],
+                            where: { productid: productId },
+                            attributes: [
+                                'id',
+                                'productid',
+                                'name',
+                                'sale_price',
+                                'original_price',
+                                'default_style',
+                            ],
                         })];
                 case 1:
                     data = _a.sent();
                     return [2 /*return*/, data];
                 case 2:
                     err_3 = _a.sent();
-                    console.log('Error getting related products', err_3);
+                    console.log('Error getting product styles', err_3);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
-    }); }
+    }); },
+    getRelatedProducts: function (productId) { return __awaiter(void 0, void 0, void 0, function () {
+        var data, err_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, model.Related.findAll({
+                            where: { current_product_id: productId },
+                            attributes: ['related_product_id'],
+                            raw: true,
+                        })];
+                case 1:
+                    data = _a.sent();
+                    return [2 /*return*/, data.map(function (item) {
+                            return item.related_product_id;
+                        })];
+                case 2:
+                    err_4 = _a.sent();
+                    console.log('Error getting related products', err_4);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); },
 };
 export default controller;
 //# sourceMappingURL=controller.js.map

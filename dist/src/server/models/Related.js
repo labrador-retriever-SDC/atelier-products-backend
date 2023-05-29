@@ -14,6 +14,10 @@ var Related = sequelize.define('related', {
         type: DataTypes.NUMBER,
         allowNull: false,
     },
-}, { timestamps: false });
+}, {
+    modelName: 'Related',
+    tableName: 'related',
+    timestamps: false,
+});
 export default Related;
 //# sourceMappingURL=Related.js.map

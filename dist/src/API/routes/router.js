@@ -4,8 +4,8 @@ var Router = express.Router({ mergeParams: true });
 Router.get('/products', function (req, res) {
     // figre out how to extract page and count
     var query = {
-        page: req.query.page,
-        count: req.query.count,
+        page: req.query.page || '1',
+        count: req.query.count || '5',
     };
     controller
         .getProducts(query)
@@ -30,11 +30,33 @@ Router.get('/products/:id', function (req, res) {
 });
 Router.get('/products/:id/styles', function (req, res) {
     var productId = Number(req.params.id);
-    controller.getProductStyles(productId);
+    controller
+        .getProductStyles(productId)
+        .then(function (data) {
+        var styles = {
+            product_id: productId,
+            results: data === null || data === void 0 ? void 0 : data.map(function (style) {
+                return {
+                    style_id: style.id,
+                    name: style.name,
+                    sale_price: style.sale_price === 'null' ? null : style.sale_price,
+                    original_price: style.original_price,
+                    'default?': style.default_style === 0 ? false : true,
+                    photos: style.photos,
+                    skus: style.skus
+                };
+            }),
+        };
+        res.send(styles);
+    })
+        .catch(function (err) {
+        res.send(err);
+    });
 });
 Router.get('/products/:id/related', function (req, res) {
     var productId = Number(req.params.id);
-    controller.getRelatedProducts(productId)
+    controller
+        .getRelatedProducts(productId)
         .then(function (data) {
         res.send(data);
     })
