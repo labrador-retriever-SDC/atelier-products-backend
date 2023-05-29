@@ -6,7 +6,7 @@ var Skus = sequelize.define('skus', {
         allowNull: false,
         primaryKey: true,
     },
-    styleId: {
+    styleid: {
         type: DataTypes.NUMBER,
         allowNull: false,
     },

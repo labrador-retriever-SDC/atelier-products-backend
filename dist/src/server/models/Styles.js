@@ -6,7 +6,7 @@ var Styles = sequelize.define('styles', {
         allowNull: false,
         primaryKey: true,
     },
-    product_id: {
+    productid: {
         type: DataTypes.INTEGER,
     },
     name: {

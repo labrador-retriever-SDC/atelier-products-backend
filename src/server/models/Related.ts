@@ -21,7 +21,8 @@ const Related = sequelize.define(
     {
         modelName: 'Related',
         tableName: 'related',
-        timestamps: false }
+        timestamps: false,
+    }
 )
 
 export default Related
