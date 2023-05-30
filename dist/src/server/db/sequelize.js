@@ -36,17 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-// import Features from '../models/Features.js';
-// import Photos from '../models/Photos.js';
-// import Products from '../models/Products.js';
-// import Related from '../models/Related.js';
-// import Skus from '../models/Skus.js';
-// import Styles from '../models/Styles.js';
-// Create a database connection and export it from this file.
-// Confirm that the credentials supplied for the connection are correct.
-// pass in a connection uri
-// Example for postgres
-// const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbName')
 dotenv.config();
 var dbName = process.env.DB_NAME || '';
 var dbUser = process.env.DB_USER || '';

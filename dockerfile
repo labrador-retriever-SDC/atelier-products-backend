@@ -20,7 +20,7 @@ COPY . .
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "server"]
+CMD ["npm", "start"]
 
 # then execute command 'docker build -t <imagename> .'
 
