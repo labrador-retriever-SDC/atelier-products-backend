@@ -48,7 +48,7 @@ const controller = {
     getProductStyles: async (productId: number) => {
         try {
             const data = await model.Styles.findAll({
-                include: [{model: model.Photos}, {model: model.Skus}],
+                include: [{ model: model.Photos }, { model: model.Skus }],
                 where: { productid: productId },
                 attributes: [
                     'id',

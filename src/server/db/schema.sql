@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS products;
+DROP DATABASE IF EXISTS products;
 CREATE DATABASE products;
 \c products;
 
@@ -62,7 +62,14 @@ CREATE TABLE skus (
   FOREIGN KEY (styleId) REFERENCES styles (id)
 );
 
-CREATE INDEX products_index_0 ON products (id);
+DO $$BEGIN
+    CREATE INDEX IF NOT EXISTS products_index_0 ON products (id);
+    CREATE INDEX IF NOT EXISTS related_current_product_id_index ON related (current_product_id);
+    CREATE INDEX IF NOT EXISTS features_product_id ON features (product_id);
+    CREATE INDEX IF NOT EXISTS styles_productid ON styles (productId);
+    CREATE INDEX IF NOT EXISTS photos_styleid ON photos (styleId);
+    CREATE INDEX IF NOT EXISTS skus_styleid ON skus (styleId);
+END$$;
 
 
 COPY products (id, name, slogan, description, category, default_price)
