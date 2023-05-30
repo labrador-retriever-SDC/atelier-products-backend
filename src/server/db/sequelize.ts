@@ -23,17 +23,26 @@ const dbUser = process.env.DB_USER || ''
 const dbPass = process.env.DB_PASSWORD || ''
 const dbHost = process.env.DB_HOST || ''
 const dbDriver = process.env.DB_DRIVER || ''
+const dbUrl = process.env.DB_URL || ''
 
 // connection
-const sequelize = new Sequelize(dbName, dbUser, dbPass, {
-    host: dbHost,
-    dialect: 'postgres',
+// const sequelize = new Sequelize(dbName, dbUser, dbPass, {
+//     host: dbHost,
+//     port: 5432,
+//     dialect: 'postgres',
+//     benchmark: true,
+//     logging: (sql, timing) => {
+//         console.log(`[Execution time: ${timing}ms]
+//          -  ${sql} \n`)
+//     },
+// })
+
+const sequelize = new Sequelize(dbUrl, {
     benchmark: true,
     logging: (sql, timing) => {
-        console.log(`[Execution time: ${timing}ms]
-         -  ${sql} \n`)
-    },
-})
+        console.log(`[Execution time: ${timing}ms] - ${sql} \n`);
+    }
+});
 
 const testConnection = async () => {
     try {

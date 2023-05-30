@@ -23,6 +23,7 @@
         "fix": "eslint . --ext .js,.ts . --fix",
         "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
         "start": "npx nodemon --watch server dist/src/index.js",
+        "server": "npx dist/src/index.js",
         "postinstall": "npm run typings",
         "typings": "typings install"
     },
