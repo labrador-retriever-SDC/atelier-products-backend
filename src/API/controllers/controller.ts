@@ -7,7 +7,7 @@ import { QueryTypes } from 'sequelize'
 const controller = {
     getProducts: async (query: any) => {
         try {
-            const data = await model.products.findAll({
+            const data = await model.Products.findAll({
                 limit: Number(query.count),
                 attributes: [
                     'id',
@@ -27,7 +27,7 @@ const controller = {
     // SEQUELIZE MAGIC ._
     getProductInfo: async (productId: number) => {
         try {
-            const data = await model.products.findOne({
+            const data = await model.Products.findOne({
                 include: [{ model: model.Features }],
                 where: { id: productId },
                 attributes: [
