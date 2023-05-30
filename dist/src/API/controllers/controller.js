@@ -43,7 +43,7 @@ var controller = {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, model.products.findAll({
+                    return [4 /*yield*/, model.Products.findAll({
                             limit: Number(query.count),
                             attributes: [
                                 'id',
@@ -72,7 +72,7 @@ var controller = {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, model.products.findOne({
+                    return [4 /*yield*/, model.Products.findOne({
                             include: [{ model: model.Features }],
                             where: { id: productId },
                             attributes: [
