@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 module.exports = {
     env: {
         browser: true,
@@ -30,5 +30,5 @@ module.exports = {
             },
         ],
     },
-}
+};
 //# sourceMappingURL=.eslintrc.js.map
