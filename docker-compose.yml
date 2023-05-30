@@ -8,7 +8,7 @@ services:
     deploy:
       replicas: 5
     ports:
-      - 3000:3000
+      - 4000:4000
 
   nginx:
     image: nginx

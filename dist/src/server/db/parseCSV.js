@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 // import csv from 'csv-parser';
 // import fs from 'fs';
 // import path from 'path';

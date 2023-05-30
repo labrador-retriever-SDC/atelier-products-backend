@@ -17,7 +17,7 @@ COPY . .
 # RUN tsc
 
 # Expose the port that your application listens on
-EXPOSE 3000
+
 
 # Start the application
 CMD ["npm", "start"]
