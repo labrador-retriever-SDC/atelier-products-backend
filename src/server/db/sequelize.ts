@@ -32,7 +32,7 @@ const sequelize = new Sequelize(dbName, dbUser, dbPass, {
     logging: (sql, timing) => {
         console.log(`[Execution time: ${timing}ms]
          -  ${sql} \n`)
-   },
+    },
 })
 
 const testConnection = async () => {

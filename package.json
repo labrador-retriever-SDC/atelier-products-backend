@@ -34,6 +34,7 @@
     },
     "dependencies": {
         "@types/lodash": "^4.14.195",
+        "@types/morgan": "^1.9.4",
         "@types/underscore": "^1.11.5",
         "artillery": "^2.0.0-32",
         "cors": "^2.8.5",

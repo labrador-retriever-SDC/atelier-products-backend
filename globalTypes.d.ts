@@ -8,11 +8,10 @@ interface Query {
     count: string
 }
 
-
 type Style<T> = {
-    id: string,
-    name: string,
-    sale_price: string,
-    original_price: number,
-    "default?": any
+    id: string
+    name: string
+    sale_price: string
+    original_price: number
+    'default?': any
 }

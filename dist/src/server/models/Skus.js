@@ -1,23 +1,27 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../db/sequelize.js';
-var Skus = sequelize.define('skus', {
-    id: {
-        type: DataTypes.NUMBER,
-        allowNull: false,
-        primaryKey: true,
+import { DataTypes } from 'sequelize'
+import sequelize from '../db/sequelize.js'
+var Skus = sequelize.define(
+    'skus',
+    {
+        id: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+            primaryKey: true,
+        },
+        styleid: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+        },
+        size: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        quantity: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+        },
     },
-    styleid: {
-        type: DataTypes.NUMBER,
-        allowNull: false,
-    },
-    size: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    quantity: {
-        type: DataTypes.NUMBER,
-        allowNull: false,
-    },
-}, { timestamps: false });
-export default Skus;
+    { timestamps: false }
+)
+export default Skus
 //# sourceMappingURL=Skus.js.map
