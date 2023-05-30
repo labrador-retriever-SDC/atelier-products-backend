@@ -57,6 +57,10 @@ var dbDriver = process.env.DB_DRIVER || '';
 var sequelize = new Sequelize(dbName, dbUser, dbPass, {
     host: dbHost,
     dialect: 'postgres',
+    benchmark: true,
+    logging: function (sql, timing) {
+        console.log("[Execution time: ".concat(timing, "ms]\n         -  ").concat(sql, " \n"));
+    },
 });
 var testConnection = function () { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;

@@ -28,6 +28,11 @@ const dbDriver = process.env.DB_DRIVER || ''
 const sequelize = new Sequelize(dbName, dbUser, dbPass, {
     host: dbHost,
     dialect: 'postgres',
+    benchmark: true,
+    logging: (sql, timing) => {
+        console.log(`[Execution time: ${timing}ms]
+         -  ${sql} \n`)
+   },
 })
 
 const testConnection = async () => {
