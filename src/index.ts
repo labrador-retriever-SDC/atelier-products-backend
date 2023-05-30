@@ -4,6 +4,7 @@ import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import Router from './API/routes/router.js'
 import sequelize from './server/db/sequelize.js'
+import morgan from 'morgan';
 
 const app: Application = express()
 

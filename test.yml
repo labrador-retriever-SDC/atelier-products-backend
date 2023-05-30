@@ -12,7 +12,8 @@ config:
       arrivalRate: 1000
       name: Sustained load
 scenarios:
-  - name: "Scenario 1 - View Users"
+  - name: "Scenario 1 - Products"
     flow:
       - get:
           url: "/products"
+  - name: "Scenario 2- Product Details"
