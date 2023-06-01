@@ -2,19 +2,6 @@ import { Sequelize, DataTypes, Deferrable } from 'sequelize'
 import dotenv from 'dotenv'
 import fs from 'node:fs'
 import path from 'node:path'
-// import Features from '../models/Features.js';
-// import Photos from '../models/Photos.js';
-// import Products from '../models/Products.js';
-// import Related from '../models/Related.js';
-// import Skus from '../models/Skus.js';
-// import Styles from '../models/Styles.js';
-
-// Create a database connection and export it from this file.
-// Confirm that the credentials supplied for the connection are correct.
-
-// pass in a connection uri
-// Example for postgres
-// const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbName')
 
 dotenv.config()
 
@@ -23,10 +10,12 @@ const dbUser = process.env.DB_USER || ''
 const dbPass = process.env.DB_PASSWORD || ''
 const dbHost = process.env.DB_HOST || ''
 const dbDriver = process.env.DB_DRIVER || ''
+const dbUrl = process.env.DB_URL || ''
 
 // connection
 const sequelize = new Sequelize(dbName, dbUser, dbPass, {
     host: dbHost,
+    port: 5432,
     dialect: 'postgres',
     benchmark: true,
     logging: (sql, timing) => {
@@ -34,6 +23,13 @@ const sequelize = new Sequelize(dbName, dbUser, dbPass, {
          -  ${sql} \n`)
     },
 })
+
+// const sequelize = new Sequelize(dbUrl, {
+//     benchmark: true,
+//     logging: (sql, timing) => {
+//         console.log(`[Execution time: ${timing}ms] - ${sql} \n`);
+//     }
+// });
 
 const testConnection = async () => {
     try {

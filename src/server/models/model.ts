@@ -14,6 +14,7 @@ const model = {
     Styles,
 }
 
+
 // Relationships
 Products.hasMany(Features, { foreignKey: 'product_id' })
 Products.hasMany(Related, { foreignKey: 'current_product_id' })

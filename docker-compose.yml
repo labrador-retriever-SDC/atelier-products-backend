@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  sdc:
+    build:
+      context: .
+      dockerfile: dockerfile
+    deploy:
+      replicas: 5
+
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - sdc
+    ports:
+      - 8080:80
