@@ -8,7 +8,6 @@ services:
     deploy:
       replicas: 5
 
-
   nginx:
     image: nginx
     volumes:
