@@ -73,4 +73,8 @@ Router.get('/products/:id/related', (req, res) => {
         })
 })
 
+Router.get('/loaderio-00c891d6681a76242a5009d05c322923', (req, res) => {
+    res.send('loaderio-00c891d6681a76242a5009d05c322923')
+})
+
 export default Router
