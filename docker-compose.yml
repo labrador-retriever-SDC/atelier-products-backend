@@ -11,8 +11,12 @@ services:
   nginx:
     image: nginx
     volumes:
-      - ./conf.d:/etc/nginx/conf.d
+      - ./conf.d/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - sdc
     ports:
       - 8080:80
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+

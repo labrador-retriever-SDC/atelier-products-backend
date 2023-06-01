@@ -66,5 +66,8 @@ Router.get('/products/:id/related', function (req, res) {
         res.send('Error getting related products');
     });
 });
+Router.get('/loaderio-00c891d6681a76242a5009d05c322923', function (req, res) {
+    res.send('loaderio-00c891d6681a76242a5009d05c322923');
+});
 export default Router;
 //# sourceMappingURL=router.js.map
