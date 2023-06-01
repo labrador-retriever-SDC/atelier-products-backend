@@ -13,9 +13,7 @@ const dbDriver = process.env.DB_DRIVER || ''
 const dbUrl = process.env.DB_URL || ''
 
 // connection
-const sequelize = new Sequelize(dbName, dbUser, dbPass, {
-    host: dbHost,
-    port: 5432,
+const sequelize = new Sequelize(dbUrl, {
     dialect: 'postgres',
     benchmark: true,
     logging: (sql, timing) => {
@@ -24,12 +22,6 @@ const sequelize = new Sequelize(dbName, dbUser, dbPass, {
     },
 })
 
-// const sequelize = new Sequelize(dbUrl, {
-//     benchmark: true,
-//     logging: (sql, timing) => {
-//         console.log(`[Execution time: ${timing}ms] - ${sql} \n`);
-//     }
-// });
 
 const testConnection = async () => {
     try {
@@ -40,21 +32,5 @@ const testConnection = async () => {
     }
 }
 
-/**
- * Seeding data by executing seed.sql
- */
-// db.sync()
-//   .then(() => Products.count())
-//   .then((count) => {
-//     // run seed.sql only if Reviews is empty
-//     if (count === 0) {
-//       const sqlString = fs.readFileSync(path.join(__dirname, '/seed.sql'), 'utf8');
-//       return db.query(sqlString);
-//     }
-//     return undefined;
-//   })
-//   .then(() => console.log("Done seeding data."))
-//   .catch(err => console.log("Error seeding data", err))
-//   .then(() => process.exit());
 
 export default sequelize

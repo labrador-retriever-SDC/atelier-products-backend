@@ -44,21 +44,13 @@ var dbHost = process.env.DB_HOST || '';
 var dbDriver = process.env.DB_DRIVER || '';
 var dbUrl = process.env.DB_URL || '';
 // connection
-var sequelize = new Sequelize(dbName, dbUser, dbPass, {
-    host: dbHost,
-    port: 5432,
+var sequelize = new Sequelize(dbUrl, {
     dialect: 'postgres',
     benchmark: true,
     logging: function (sql, timing) {
         console.log("[Execution time: ".concat(timing, "ms]\n         -  ").concat(sql, " \n"));
     },
 });
-// const sequelize = new Sequelize(dbUrl, {
-//     benchmark: true,
-//     logging: (sql, timing) => {
-//         console.log(`[Execution time: ${timing}ms] - ${sql} \n`);
-//     }
-// });
 var testConnection = function () { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
@@ -78,21 +70,5 @@ var testConnection = function () { return __awaiter(void 0, void 0, void 0, func
         }
     });
 }); };
-/**
- * Seeding data by executing seed.sql
- */
-// db.sync()
-//   .then(() => Products.count())
-//   .then((count) => {
-//     // run seed.sql only if Reviews is empty
-//     if (count === 0) {
-//       const sqlString = fs.readFileSync(path.join(__dirname, '/seed.sql'), 'utf8');
-//       return db.query(sqlString);
-//     }
-//     return undefined;
-//   })
-//   .then(() => console.log("Done seeding data."))
-//   .catch(err => console.log("Error seeding data", err))
-//   .then(() => process.exit());
 export default sequelize;
 //# sourceMappingURL=sequelize.js.map
