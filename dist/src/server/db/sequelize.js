@@ -44,11 +44,20 @@ var dbHost = process.env.DB_HOST || '';
 var dbDriver = process.env.DB_DRIVER || '';
 var dbUrl = process.env.DB_URL || '';
 // connection
-var sequelize = new Sequelize(dbUrl, {
+// const sequelize = new Sequelize(dbUrl, {
+//     dialect: 'postgres',
+//     benchmark: true,
+//     logging: (sql, timing) => {
+//         console.log(`[Execution time: ${timing}ms]
+//          -  ${sql} \n`)
+//     },
+// })
+var sequelize = new Sequelize(dbName, dbUser, dbPass, {
     dialect: 'postgres',
+    host: dbHost,
     benchmark: true,
     logging: function (sql, timing) {
-        console.log("[Execution time: ".concat(timing, "ms]\n         -  ").concat(sql, " \n"));
+        console.log("[Execution time: ".concat(timing, "ms]\n").concat(sql, "\n"));
     },
 });
 var testConnection = function () { return __awaiter(void 0, void 0, void 0, function () {

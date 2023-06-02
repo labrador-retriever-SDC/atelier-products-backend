@@ -13,14 +13,23 @@ const dbDriver = process.env.DB_DRIVER || ''
 const dbUrl = process.env.DB_URL || ''
 
 // connection
-const sequelize = new Sequelize(dbUrl, {
+// const sequelize = new Sequelize(dbUrl, {
+//     dialect: 'postgres',
+//     benchmark: true,
+//     logging: (sql, timing) => {
+//         console.log(`[Execution time: ${timing}ms]
+//          -  ${sql} \n`)
+//     },
+// })
+
+const sequelize = new Sequelize(dbName, dbUser, dbPass, {
     dialect: 'postgres',
+    host: dbHost,
     benchmark: true,
     logging: (sql, timing) => {
-        console.log(`[Execution time: ${timing}ms]
-         -  ${sql} \n`)
+      console.log(`[Execution time: ${timing}ms]\n${sql}\n`);
     },
-})
+  });
 
 
 const testConnection = async () => {
